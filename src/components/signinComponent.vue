@@ -43,10 +43,11 @@ export default {
 
 .username{ 
   transform-origin: center;
-  font-family: helvetica system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: cascadia code;
 }
 .password{
   transform-origin: center;
+  font-family: cascadia code;
 }
 .main {
   display: flex;
