@@ -1,31 +1,70 @@
 <template>
   <div>
-   <h1>h</h1>
-   
-    <!-- Your component's template goes here -->
+   <h1 class = calculator>Calculator:</h1>
+   <h3 class = calculator>Number 1:</h3>
+   <input class = inputs v-model="number1" placeholder ="Enter first number" type = int>
+    <h3 class = calculator>Number 2:</h3>
+    <input class = inputs v-model="number2" placeholder="Enter second number" type = int>
+    <h3 class = calculator>Operator</h3>
+    <input class = inputs v-model="operator" placeholder="+,-,*,/" type = string>
+    <button class = inputs @click="calculate">calculate</button>
+    <p>Result: {{this.response.result}}</p>
   </div>
+  
 </template>
 
 <script>
-export default {
-  name: 'CalculatorComponent',
-  data() {
-    return {
-      // Your component's data goes here
-    };
+import axios from 'axios'
+export default{
+  name: 'calculatorComponent',
+  data(){
+    return{
+      number1: '',
+      number2:'',
+      operator:'',
+      response:''
+    }
   },
-  methods: {
-    // Your component's methods go here
-  },
-  computed: {
-    // Your component's computed properties go here
-  },
-  mounted() {
-    // Your component's mounted lifecycle hook goes here
-  },
-};
+  methods:{
+   async calculate(){
+    try{
+      const response = await axios.post('http://127.0.1:5000/calculator', {
+      number1: this.number1,
+      number2: this.number2,
+      operator: this.operator
+    })
+    this.response = response.data
+    console.log(response.data)
+    }
+    catch(error){
+      console.log(error)
+  }
+  }
+}
+}
 </script>
 
 <style >
 /* Your component's styles go here */
+.calculator{
+  transform-origin: center;
+  font-family: cascadia code;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  font-size: 2em;
+}
+.inputs{
+  transform-origin: center;
+  font-family: cascadia code;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  font-size: 1em;
+}
+
 </style>

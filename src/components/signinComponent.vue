@@ -12,7 +12,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'HelloWorld',
+  name: 'signinComponent',
   data() {
     return { 
       username: '',
