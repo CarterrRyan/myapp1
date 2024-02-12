@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = container>
    <h1 class = calculator>Calculator:</h1>
    <h3 class = calculator>Number 1:</h3>
    <input class = inputs v-model="number1" placeholder ="Enter first number" type = int>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 export default{
   name: 'calculatorComponent',
   data(){
@@ -46,23 +46,28 @@ export default{
 
 <style >
 /* Your component's styles go here */
-.calculator{
-  transform-origin: center;
-  font-family: cascadia code;
+body {
+  display: grid;
+  place-items: center;
+  height: 50vh;
+  margin: 0;
+  padding: 0;
+}
+.container{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  justify-content:center;
+  height:50vh;
+}
+
+.calculator{
+  font-family: 'cascadia code';
   margin: 20px;
   font-size: 2em;
 }
 .inputs{
-  transform-origin: center;
-  font-family: cascadia code;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  font-family: 'cascadia code';
   margin: 20px;
   font-size: 1em;
 }
