@@ -28,7 +28,6 @@ export default {
         const provider = new GoogleAuthProvider();
         await signInWithPopup(auth, provider);
         // You may add code here to handle successful sign up with Google
-        // on successfull signup, redirect to mainMenu
         this.$router.push('/mainMenu');
       } catch(error) {
         console.log(error);
@@ -41,7 +40,7 @@ export default {
           password: this.password
         });
         console.log(response.data);
-        this.$router.push('/mainMenu');
+        this.$router.push('/calculator');
       } catch(error) {
         console.log(error);
       }
