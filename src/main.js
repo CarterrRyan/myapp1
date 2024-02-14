@@ -6,10 +6,13 @@ import{createRouter, createWebHistory} from 'vue-router'
 import App from './App.vue'
 import calculatorComponent from './components/calculatorComponent.vue'
 import signinComponent from './components/signinComponent.vue'
+import mainMenuComponent from './components/mainMenuComponent.vue'
+
 //define routes
 const routes = [
     {path: '/signin', component: signinComponent},
-    {path: '/calculator', component: calculatorComponent}
+    {path: '/calculator', component: calculatorComponent},
+    {path: '/mainMenu', component: mainMenuComponent},
 ]
 
 //create router instance

@@ -5,12 +5,15 @@
     <h1 class="password"> Password:</h1>
     <input class="password" v-model="password" placeholder="Password" type="Text">
     <button @click="signin" class="signin">Sign In</button>
+    <button @click="signup" class="signup">Sign up with Google</button>
   </div>
-  
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import { auth } from '../components/firebaseConfig.js';
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
 export default {
   name: 'signinComponent',
   data() {
@@ -20,17 +23,27 @@ export default {
     }
   },
   methods:{
-    async signin(){
-      try{
+    async signup() {
+      try {
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
+        // You may add code here to handle successful sign up with Google
+        // on successfull signup, redirect to mainMenu
+        this.$router.push('/mainMenu');
+      } catch(error) {
+        console.log(error);
+      }
+    },
+    async signin() {
+      try {
         const response = await axios.post('http://127.0.1:5000/signin', {
           username: this.username,
           password: this.password
-        })
-        console.log(response.data)
-        this.$router.push('/calculator')
-      }
-      catch(error){
-        console.log(error)
+        });
+        console.log(response.data);
+        this.$router.push('/mainMenu');
+      } catch(error) {
+        console.log(error);
       }
     }
   }
@@ -62,6 +75,12 @@ export default {
   transform: scale(1.5);
   position: relative;
   top: 48px;
+}
+.signup{
+  transform: scale(1.5);
+  position: relative;
+  top: 66px;
+
 }
 
 h3 {

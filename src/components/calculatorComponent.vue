@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class ="main">
    <h1 class = calculator>Calculator:</h1>
    <h3 class = calculator>Number 1:</h3>
    <input class = inputs v-model="number1" placeholder ="Enter first number" type = int>
@@ -15,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+
 export default{
   name: 'calculatorComponent',
   data(){
@@ -44,21 +45,16 @@ export default{
 }
 </script>
 
-<style >
-/* Your component's styles go here */
-.calculator{
-  transform-origin: center;
-  font-family: cascadia code;
+<style>
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 20px;
-  font-size: 2em;
+  height: 100vh; /* This makes the container take up the full height of the viewport */
 }
-.inputs{
-  transform-origin: center;
-  font-family: cascadia code;
+
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,5 +62,60 @@ export default{
   margin: 20px;
   font-size: 1em;
 }
+
+.calculator, .inputs {
+  transform-origin: center;
+  font-family: cascadia code;
+  margin: 20px;
+}
+
+.calculator {
+  font-size: 1em;
+}
+
+.inputs {
+  font-size: 1em;
+}
+
+/* When the screen size is 600px or less, decrease the font size and margin */
+@media screen and (max-width: 600px) {
+  .main {
+    font-size: 0.8em;
+    margin: 10px;
+  }
+
+  .calculator, .inputs {
+    margin: 10px;
+  }
+
+  .calculator {
+    font-size: 0.8em;
+  }
+
+  .inputs {
+    font-size: 0.8em;
+  }
+}
+
+/* When the screen size is 400px or less, decrease the font size and margin further */
+@media screen and (max-width: 400px) {
+  .main {
+    font-size: 0.6em;
+    margin: 5px;
+  }
+
+  .calculator, .inputs {
+    margin: 5px;
+  }
+
+  .calculator {
+    font-size: 0.6em;
+  }
+
+  .inputs {
+    font-size: 0.6em;
+  }
+}
+
 
 </style>
