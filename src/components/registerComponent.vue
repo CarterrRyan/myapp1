@@ -2,37 +2,46 @@
   <div class="main">
    <h1 class="email"> Email:</h1>
     <input class="email" v-model="email" placeholder="Email" type="Text">
+    <h1 class="name"> Name:</h1>
+    <input class="name" v-model="name" placeholder="Name" type="Text">
     <h1 class="password"> Password:</h1>
     <input class="password" v-model="password" placeholder="Password" type="Text">
-    <button @click="signin" class="signin">Sign In</button>
-    <button @click="signup" class="signup">Register</button>
+    <button @click="register" class="register">register</button>
+    <button @click="signup" class="signup">Sign up with Google</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-
+import { auth } from '../../firebaseConfig.mjs';
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export default {
-  name: 'signinComponent',
+  name: 'registerComponent',
   data() {
     return { 
-      username: '',
+      email: '',
+      name:'',
       password: ''
     }
   },
   methods:{
     async signup() {
       try {
-        this.$router.push('/register')
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(auth, provider);
+        // You may add code here to handle successful sign up with Google
+        this.$router.push('/mainMenu');
+        
       } catch(error) {
         console.log(error);
       }
     },
-    async signin() {
+    async register() {
       try {
-        const response = await axios.post('http://localhost:3000/signin', {
+        const response = await axios.post('http://localhost:3000/register', {
           email: this.email,
+          name:this.name,
           password: this.password
         });
         console.log(response.data);
@@ -66,7 +75,7 @@ export default {
   font-size: 2em;
 }
 
-.signin {
+.register {
   transform: scale(1.5);
   position: relative;
   top: 48px;

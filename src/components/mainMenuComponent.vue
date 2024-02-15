@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>h</h1>
-    
+    <button @click="Calculator()">Calculator</button>
   </div>
 </template>
 
@@ -9,6 +9,11 @@
 export default {
   name: 'MainMenuComponent',
   // Your Vue component logic goes here
+  methods:{
+    calcualtor(){
+        this.$router.push('/calculator')
+    }
+  }
 }
 </script>
 

@@ -11,8 +11,10 @@ export default {
   components: {
   },
   mounted() {
+    
     this.$router.push('/signin');
   },
+
 }
 </script>
 
