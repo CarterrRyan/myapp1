@@ -1,8 +1,7 @@
-// import 'dotenv/config';
-const dotenv = require('dotenv');
-const dotenvExpand = require('dotenv_Expand');
+import 'dotenv/config';
+import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
 const config = dotenv.config();
-dotenvExpand(config);
 console.log(config);
 
 import { initializeApp } from 'firebase/app';
